@@ -18,7 +18,7 @@ from cleverhans.utils_tf import model_train, model_eval, batch_eval
 
 FLAGS = flags.FLAGS
 
-flags.DEFINE_string('train_dir', '/tmp', 'Directory storing the saved model.')
+flags.DEFINE_string('train_dir', './tmp', 'Directory storing the saved model.')
 flags.DEFINE_string(
     'filename', 'cifar10.ckpt', 'Filename to save model under.')
 flags.DEFINE_integer('nb_epochs', 10, 'Number of epochs to train model')
@@ -38,7 +38,7 @@ def data_cifar10():
     nb_classes = 10
 
     # the data, shuffled and split between train and test sets
-    (X_train, y_train), (X_test, y_test) = cifar10.load_data_local()
+    (X_train, y_train), (X_test, y_test) = cifar10.load_data_local('http://localhost/cifar-10-python.tar.gz')
 
     if keras.backend.image_dim_ordering() == 'th':
         X_train = X_train.reshape(X_train.shape[0], 3, img_rows, img_cols)
