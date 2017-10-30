@@ -38,7 +38,7 @@ def data_cifar10():
     nb_classes = 10
 
     # the data, shuffled and split between train and test sets
-    (X_train, y_train), (X_test, y_test) = cifar10.load_data_local('http://localhost/cifar-10-python.tar.gz')
+    (X_train, y_train), (X_test, y_test) = cifar10.load_data_local(origin = 'http://localhost/cifar-10-python.tar.gz')
 
     if keras.backend.image_dim_ordering() == 'th':
         X_train = X_train.reshape(X_train.shape[0], 3, img_rows, img_cols)
