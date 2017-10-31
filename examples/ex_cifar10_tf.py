@@ -98,8 +98,8 @@ def main(argv=None):
     y = tf.placeholder(tf.float32, shape=(None, 17))
 
     # Define TF model graph
-    model = cnn_model(img_rows=32, img_cols=32, channels=3)
-    predictions = model(x, nb_classes=17)
+    model = cnn_model(img_rows=32, img_cols=32, channels=3, nb_classes=17)
+    predictions = model(x)
     print("Defined TensorFlow model graph.")
 
     def evaluate():
