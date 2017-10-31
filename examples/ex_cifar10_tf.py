@@ -39,7 +39,7 @@ def data_cifar10():
 
     # the data, shuffled and split between train and test sets
     #(X_train, y_train), (X_test, y_test) = cifar10.load_data_local(origin = 'http://localhost/cifar-10-python.tar.gz')
-    (X_train, y_train), (X_test, y_test) = cifar10.load_data_local(origin = 'http://localhost/lisa-17-python.tar.gz', num_train_samples = 4183, train_samples = 4183)
+    (X_train, y_train), (X_test, y_test) = cifar10.load_data_local(origin = 'http://localhost/lisa-17-python.tar.gz', num_train_samples = 4083, train_samples = 4083)
 
 
     if keras.backend.image_dim_ordering() == 'th':
