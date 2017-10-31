@@ -57,6 +57,7 @@ def data_cifar10():
     print(X_test.shape[0], 'test samples')
 
     # convert class vectors to binary class matrices
+    print(nb_classes)
     Y_train = np_utils.to_categorical(y_train, nb_classes)
     Y_test = np_utils.to_categorical(y_test, nb_classes)
     return X_train, Y_train, X_test, Y_test
