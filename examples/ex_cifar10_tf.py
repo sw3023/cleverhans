@@ -35,7 +35,7 @@ def data_cifar10():
     # These values are specific to CIFAR10
     img_rows = 32
     img_cols = 32
-    nb_classes = 10
+    nb_classes = 17
 
     # the data, shuffled and split between train and test sets
     #(X_train, y_train), (X_test, y_test) = cifar10.load_data_local(origin = 'http://localhost/cifar-10-python.tar.gz')
@@ -88,7 +88,8 @@ def main(argv=None):
     # Get CIFAR10 test data
     X_train, Y_train, X_test, Y_test = data_cifar10()
 
-    assert Y_train.shape[1] == 10.
+    assert Y_train.shape[1] == 17.
+    return 0
     label_smooth = .1
     Y_train = Y_train.clip(label_smooth / 9., 1. - label_smooth)
 
