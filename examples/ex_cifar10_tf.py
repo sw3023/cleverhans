@@ -90,13 +90,12 @@ def main(argv=None):
     X_train, Y_train, X_test, Y_test = data_cifar10()
 
     assert Y_train.shape[1] == 17.
-    return 0
     label_smooth = .1
     Y_train = Y_train.clip(label_smooth / 9., 1. - label_smooth)
 
     # Define input TF placeholder
     x = tf.placeholder(tf.float32, shape=(None, 32, 32, 3))
-    y = tf.placeholder(tf.float32, shape=(None, 10))
+    y = tf.placeholder(tf.float32, shape=(None, 17))
 
     # Define TF model graph
     model = cnn_model(img_rows=32, img_cols=32, channels=3)
@@ -109,7 +108,7 @@ def main(argv=None):
         eval_params = {'batch_size': FLAGS.batch_size}
         accuracy = model_eval(sess, x, y, predictions, X_test, Y_test,
                               args=eval_params)
-        assert X_test.shape[0] == 10000, X_test.shape
+        #assert X_test.shape[0] == 10000, X_test.shape
         print('Test accuracy on legitimate test examples: ' + str(accuracy))
 
     # Train an CIFAR10 model
@@ -120,7 +119,7 @@ def main(argv=None):
     }
     model_train(sess, x, y, predictions, X_train, Y_train,
                 evaluate=evaluate, args=train_params)
-
+    return 0
     # Craft adversarial examples using Fast Gradient Sign Method (FGSM)
     adv_x = fgsm(x, predictions, eps=0.3)
     eval_params = {'batch_size': FLAGS.batch_size}
