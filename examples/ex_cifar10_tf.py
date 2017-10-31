@@ -99,7 +99,7 @@ def main(argv=None):
 
     # Define TF model graph
     model = cnn_model(img_rows=32, img_cols=32, channels=3)
-    predictions = model(x)
+    predictions = model(x, nb_classes=17)
     print("Defined TensorFlow model graph.")
 
     def evaluate():
